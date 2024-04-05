@@ -1,0 +1,26 @@
+<div>
+    <form [formGroup]="addSubCategory" (ngSubmit)="onSubmit()">
+      
+      <br>
+      <label>
+        Name:
+        <input type="text" formControlName="name">
+      </label>
+      <br>
+      <label>
+        Description:
+        <textarea formControlName="desc"></textarea>
+      </label>
+      <label>
+      <select formControlName="catId">
+        <option >Select</option>
+          <option *ngFor="let item of this.dataList;let i = index" value="{{item.id}}" [selected]="i == 0" >
+            {{item.name}}
+          </option>
+        </select>
+        </label>
+
+      <br>
+      <button type="submit" [disabled]="addSubCategory.invalid">Submit</button>
+    </form>
+</div>
