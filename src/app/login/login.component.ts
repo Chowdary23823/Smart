@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
+  
 login= new FormGroup({
   email: new FormControl('',[]),
   password: new FormControl('',[])

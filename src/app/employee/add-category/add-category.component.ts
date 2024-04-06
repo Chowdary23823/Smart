@@ -38,10 +38,15 @@ export class AddCategoryComponent {
     this.apiService.postCategory(this.newObj).subscribe({
       next:(res)=>{
         console.log("Submitted")
+        alert("Category Added Succesfully")
+    this.router.navigate(['/home']);
+      },
+      error: (err) => {
+        console.error('Error: ' + err);
+        alert("Category Not Added Error Occured")
       }
     })
-    alert("Category Added Succesfully")
-    this.router.navigate(['/home']);
+    
   }
   ngOnInit() {
     console.log("this is add category")

@@ -20,6 +20,10 @@ import { CommonModule } from '@angular/common';
 
 import { NgFor, NgIf } from '@angular/common';
 import { MainComponent } from './employee/main/main.component';
+import { CategoryComponent } from './employee/category/category.component';
+import { SubCategoryComponent } from './employee/sub-category/sub-category.component';
+import { ProductListComponent } from './employee/Product/product-list/product-list.component';
+import { BillingComponent } from './employee/billing/billing.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,11 @@ import { MainComponent } from './employee/main/main.component';
     AddCategoryComponent,
     AddSubcategoryComponent,
     AddProductComponent,
-    MainComponent
+    MainComponent,
+    CategoryComponent,
+    SubCategoryComponent,
+    ProductListComponent,
+    BillingComponent
     
   ],
   imports: [

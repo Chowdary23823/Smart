@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { APIServicesService } from '../../Services/apiservices.service';
 import { SubCategory } from '../../Model/SubCategory';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-add-subcategory',
   templateUrl: './add-subcategory.component.html',
@@ -23,7 +24,7 @@ export class AddSubcategoryComponent implements OnInit{
   }
 
 
-  constructor(private apiService:APIServicesService){}
+  constructor(private apiService:APIServicesService,private router:Router){}
 
   ngOnInit()
   {
@@ -48,7 +49,16 @@ export class AddSubcategoryComponent implements OnInit{
     this.apiService.postSubCategory(this.newObj).subscribe({
       next:(res)=>{
         console.log("Submitted")
+        alert("Sub Category Added Succesfully")
+        this.router.navigate(['/home']);
+      },
+      error: (err) => {
+        console.error('Error: ' + err);
+        alert("Sub Category Not Added Error Occured")
       }
+      
     })
+    
+
   }
 }

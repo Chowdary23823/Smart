@@ -1,1 +1,36 @@
-<p>add-product works!</p>
+<div>
+    <form [formGroup]="addProduct" (ngSubmit)="onSubmit()">
+      
+      <br>
+      <label>
+        Name:
+        <input type="text" formControlName="name">
+      </label>
+      <br>
+      <label>
+        Description:
+        <textarea formControlName="desc"></textarea>
+      </label>
+      <br>
+      <label>
+        Price: 
+        <input type="number" formControlName="price">
+      </label>
+      <br>
+      <label>
+        Quantity:
+        <input type="number" formControlName="quantity" value="1">
+      </label>
+      <br>
+      <label>
+        <select formControlName="subCatId">
+          <option >Select</option>
+            <option *ngFor="let item of this.dataList;let i = index" value="{{item.id}}" [selected]="i == 0" >
+              {{item.name}}
+            </option>
+          </select>
+          </label>
+      <br>
+      <button type="submit" [disabled]="addProduct.invalid">Submit</button>
+    </form>
+</div>

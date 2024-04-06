@@ -1,0 +1,33 @@
+<table>
+    <tr>
+        <td>
+            Id
+        </td>
+        <td>Name</td>
+        <td>
+            Description
+        </td>
+        <td>
+            Category Name
+        </td>
+    </tr>
+    
+    
+    <tr *ngFor="let row of this.data">
+        <td>
+            {{row.id}}
+        </td>
+        <td>
+            {{row.name}}
+        </td>
+        <td>
+            {{row.description}}
+        </td>
+        <td>
+            {{row.category.name}}
+        </td>
+
+    </tr>
+    
+    
+    </table>
