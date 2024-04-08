@@ -24,6 +24,7 @@ import { CategoryComponent } from './employee/category/category.component';
 import { SubCategoryComponent } from './employee/sub-category/sub-category.component';
 import { ProductListComponent } from './employee/Product/product-list/product-list.component';
 import { BillingComponent } from './employee/billing/billing.component';
+import { ProductComponent } from './employee/Product/product/product.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { BillingComponent } from './employee/billing/billing.component';
     CategoryComponent,
     SubCategoryComponent,
     ProductListComponent,
-    BillingComponent
+    BillingComponent,
+    ProductComponent
     
   ],
   imports: [
@@ -54,7 +56,7 @@ import { BillingComponent } from './employee/billing/billing.component';
     CommonModule,
     
   ],
-  providers: [{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

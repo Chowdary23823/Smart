@@ -7,27 +7,18 @@ import { APIServicesService } from '../../Services/apiservices.service';
   styleUrl: './main.component.css'
 })
 export class MainComponent implements OnInit {
-data: any;
-constructor(private apiSerivce:APIServicesService)
+constructor()
 {}
  
 
 
 ngOnInit()
 {
-  this.get();
+  console.log("main")
 }
 
 
-get()
-  {
-    console.log("get in home called");
-     this.apiSerivce.getCategoriesData().subscribe(res=>{
-      this.data = res;
-    })
-    
-   
-  }
+
 
 
 }

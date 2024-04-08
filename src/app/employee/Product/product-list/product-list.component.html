@@ -16,24 +16,33 @@
     </tr>
     
     
-    <tr *ngFor="let row of this.data">
-        <td>
-            {{row.id}}
-        </td>
-        <td>
-            {{row.name}}
-        </td>
-        <td>
-            {{row.description}}
-        </td>
-        <td>
-            {{row.price}}
-        </td>
-        <td>
-            {{row.quantity}}
-        </td>
+        <tr *ngFor="let row of this.data" style="color: aqua;" (click)="canShowChild(row)"> 
+            
 
-    </tr>
+            
+            <td>
+                {{row.id}}
+            </td>
+            <td>
+                {{row.name}}
+            </td>
+            <td>
+                {{row.description}}
+            </td>
+            <td>
+                {{row.price}}
+            </td>
+            <td>
+                {{row.quantity}}
+            </td>
+            
+
+        </tr>
+    
     
     
     </table>
+
+
+
+    <app-product [product]="passToChild"></app-product>
