@@ -12,7 +12,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { HomeComponent } from './employee/home/home.component';
 import { NavigationComponent } from './employee/navigation/navigation.component';
 import { AddCategoryComponent } from './employee/add-category/add-category.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { AddSubcategoryComponent } from './employee/add-subcategory/add-subcategory.component';
 import { AddProductComponent } from './employee/add-product/add-product.component';
 import { RouterModule } from '@angular/router';
@@ -25,6 +25,11 @@ import { SubCategoryComponent } from './employee/sub-category/sub-category.compo
 import { ProductListComponent } from './employee/Product/product-list/product-list.component';
 import { BillingComponent } from './employee/billing/billing.component';
 import { ProductComponent } from './employee/Product/product/product.component';
+import { ListfilterPipe } from './Pipes/listfilter.pipe';
+import { RequestInterceptor } from './Interceptors/requests.interceptor';
+import { CredentialsService } from './Services/credentials.service';
+import { ProductServicesService } from './Services/product-services.service';
+import { APIServicesService } from './Services/apiservices.service';
 
 @NgModule({
   declarations: [
@@ -40,7 +45,9 @@ import { ProductComponent } from './employee/Product/product/product.component';
     SubCategoryComponent,
     ProductListComponent,
     BillingComponent,
-    ProductComponent
+    ProductComponent,
+    ListfilterPipe
+    
     
   ],
   imports: [
@@ -56,7 +63,7 @@ import { ProductComponent } from './employee/Product/product/product.component';
     CommonModule,
     
   ],
-  providers: [],
+  providers: [ CredentialsService,ProductServicesService,APIServicesService,{provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

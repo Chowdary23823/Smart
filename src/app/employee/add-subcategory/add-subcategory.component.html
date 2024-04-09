@@ -1,4 +1,42 @@
 <div>
+  <app-sub-category
+  (childSearchEvent)="receivedOnSearchHandler($event)"
+  (onInitEvent)="receiveDataFromChild($event)"></app-sub-category>
+  <table>
+    <tr>
+        <td>
+            Id
+        </td>
+        <td>Name</td>
+        <td>
+            Description
+        </td>
+        <td>
+            Category Name
+        </td>
+    </tr>
+    
+    
+    <tr *ngFor="let row of this.subCategoryData | listfilter: this.searchFromChild">
+        <td>
+            {{row.id}}
+        </td>
+        <td>
+            {{row.name}}
+        </td>
+        <td>
+            {{row.description}}
+        </td>
+        <td>
+            {{row.category.name}}
+        </td>
+
+    </tr>
+    
+    
+    </table>
+</div>
+<div>
     <form [formGroup]="addSubCategory" (ngSubmit)="onSubmit()">
       
       <br>

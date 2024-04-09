@@ -3,6 +3,7 @@ import { Category } from '../Model/Category';
 import { HttpClient } from '@angular/common/http';
 import { SubCategory } from '../Model/SubCategory';
 import { Product } from '../Model/Product';
+import { SoldItems } from '../Model/SoldItems';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,9 @@ export class APIServicesService {
   addProductApiUrlPost="http://localhost:5123/SuperMarket/AllNewProduct"
 
   GetProductDataApiUrl="http://localhost:5123/SuperMarket/GetAllProducts"
+
+
+  postSoldItemsUrl="http://localhost:5123/SuperMarket/AddSoldItems"
 
   constructor(public http: HttpClient) {
     
@@ -53,6 +57,12 @@ export class APIServicesService {
 
   getProductsData(){
     return this.http.get(this.GetProductDataApiUrl);
+  }
+
+
+  postSoldItems(data:SoldItems[])
+  {
+    return this.http.post(this.postSoldItemsUrl ,data);
   }
 
 }

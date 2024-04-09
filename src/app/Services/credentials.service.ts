@@ -5,9 +5,11 @@ import { Injectable } from '@angular/core';
 })
 export class CredentialsService {
 
-
-  email="kushal@gmail.com";
+  userEmail:any;
+  
+  //email="kushal@gmail.com";
   password="kushal";
+  //the above b
   isLoggedIn:boolean =false;
   constructor() { }
 }

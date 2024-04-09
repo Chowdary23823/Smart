@@ -8,8 +8,11 @@ import { Router } from '@angular/router';
   templateUrl: './add-subcategory.component.html',
   styleUrl: './add-subcategory.component.css'
 })
+
 export class AddSubcategoryComponent implements OnInit{
+  subCategoryData:any;
   dataList: any = [];
+  searchFromChild:string ="";
   addSubCategory = new FormGroup({
     
     name : new FormControl(),
@@ -60,5 +63,16 @@ export class AddSubcategoryComponent implements OnInit{
     })
     
 
+  }
+
+
+  receiveDataFromChild(e:any){
+    this.subCategoryData=e;
+
+  }
+
+  receivedOnSearchHandler(e:any)
+  {
+    this.searchFromChild=e;
   }
 }

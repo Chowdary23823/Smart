@@ -26,6 +26,7 @@ constructor(private service: CredentialsService,private router: Router)
 onSubmit(){
   if(this.isValid()){
         this.service.isLoggedIn=true;
+        this.service.userEmail=this.login.value.email;
     console.log("User is logged in ");
     this.router.navigate(['/home']);
   }else{
@@ -36,7 +37,7 @@ onSubmit(){
 
 isValid()
 {
-  if(this.login.value.email===this.service.email&& this.login.value.password===this.service.password)
+  if( this.login.value.password===this.service.password)
   {
     return true;
   }else{
