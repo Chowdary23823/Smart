@@ -1,3 +1,7 @@
+<label>
+    Price Range of products<br>
+    Update ranges to view as per request
+</label>
 <input type="number" [(ngModel)]="from">
 <input type="number" [(ngModel)]="to">
 
@@ -52,4 +56,4 @@ We have Number of products{{noOfProducts}}
 
 
 
-    <app-product [product]="passToChild"></app-product>
+    <app-product [product]="passToChild" *ngIf="this.productSerice.canShowChild"></app-product>

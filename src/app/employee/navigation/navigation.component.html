@@ -1,7 +1,7 @@
 <div>
 
     <img src="../../../assets/images/Smartmart.png" alt="Smart Mart">
-    <ul>
+    <ul *ngIf="this.service.isLoggedIn">
         <li>
             <a [routerLink]="['home']">Home</a>
         </li>

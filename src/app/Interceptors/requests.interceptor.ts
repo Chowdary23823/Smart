@@ -14,7 +14,9 @@ export class RequestInterceptor implements HttpInterceptor {
     
       request = request.clone({
         setHeaders: {
-          Authorization: this.service.userEmail
+          Authorization: this.service.userEmail,
+          customheader: ''+ this.service.userEmail+' the user email'
+
         }
       });
 

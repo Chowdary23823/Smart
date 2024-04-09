@@ -23,10 +23,14 @@ const routes : Routes = [
     component: MainComponent,
     canActivate:[AuthGuard],
     canActivateChild:[ToShowProductDeatilsGuard]
+   
+
+    
   },
   {
   path:'login',
   component:LoginComponent
+  
   },{
     path:'addcategory',
     component:AddCategoryComponent
@@ -38,7 +42,8 @@ const routes : Routes = [
   {
     path:'addproduct',
     component:AddProductComponent
-  },{
+  },
+  {
     path:'productList',
     component:ProductListComponent,
     canActivateChild:[ToShowProductDeatilsGuard]

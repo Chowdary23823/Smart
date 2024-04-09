@@ -13,7 +13,7 @@ export class AuthGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): MaybeAsync<GuardResult> {
     //for developing purpose i'm directly returnning the true;
     console.log("can Auth")
-    return true;
+    //return true;
     if (this.service.isLoggedIn === true){
       console.log("User is logged in");
       return true;

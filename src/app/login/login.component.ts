@@ -30,14 +30,14 @@ onSubmit(){
     console.log("User is logged in ");
     this.router.navigate(['/home']);
   }else{
-    alert("Please fill out all fields");
+    alert("Please fill out all fields Correctly");
   }
   
 }
 
 isValid()
 {
-  if( this.login.value.password===this.service.password)
+  if( this.login.value.password==this.service.password)
   {
     return true;
   }else{
