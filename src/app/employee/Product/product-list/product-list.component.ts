@@ -63,7 +63,7 @@ export class ProductListComponent implements  OnInit {
   ngOnInit() {
     this.getProductData();
     //this.productSerice.canShowChild=false;
-    
+    this.productSerice.canShowChild=false;
     console.log("jjaja")
 
   }
