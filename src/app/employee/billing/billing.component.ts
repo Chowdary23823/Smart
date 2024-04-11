@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SoldItems } from '../../Model/SoldItems';
 import { APIServicesService } from '../../Services/apiservices.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-billing',
@@ -33,11 +34,11 @@ export class BillingComponent implements OnInit{
 "quantity":157
 }
   ];
-  router: any;
+  
 
   
 
-  constructor(private fb: FormBuilder,private apiService:APIServicesService) {}
+  constructor(private fb: FormBuilder,private apiService:APIServicesService,private router:Router) {}
 
   ngOnInit(): void {
 
@@ -96,42 +97,52 @@ export class BillingComponent implements OnInit{
     const totalPriceForItem = quantity * price; 
     console.log("this is foreach",totalPriceForItem,"qa",quantity)   
     this.billSum += totalPriceForItem;
-
+    })
 
     const soldItemsList: SoldItems[] = [];
 
-  
-    this.myForm.controls.forEach((control :any)=> {
+    const currentDate = new Date();
+    const year = currentDate.getFullYear();
+    const month = String(currentDate.getMonth() + 1).padStart(2, '0'); 
+    const day = String(currentDate.getDate()).padStart(2, '0');
+    const dateOnlyString = `${year}-${month}-${day}`;
+    
+    
+    itemsArray.controls.forEach((control :any)=> {
     const soldItem: SoldItems = {
-      Date: control.get('date')?.value,
+      Date: dateOnlyString,
       Name: control.get('name')?.value, 
       ItemId: control.get('itemId')?.value, 
       Quantity: control.get('quantityrequried')?.value, 
-      TotalPrice: control.get('quantityrequried')?.value * control.get('price')?.value 
+      TotalPrice: (control.get('quantityrequried')?.value * control.get('price')?.value )
     };
 
     
     soldItemsList.push(soldItem);
 
-    this.apiService.postSoldItems(soldItemsList).subscribe({
-      next:(res)=>{
-        console.log("Submitted")
-        window.print();
-        alert("Products Sold Succesfully")
-        this.router.navigate(['/home']);
-      },
-      error: (err) => {
-        console.error('Error: ' + err);
-        alert(" Error Occured")
-      }
-      
-    })
+    
   });
+  console.log(soldItemsList, "is a list to be inserted")
+  this.apiService.postSoldItems(soldItemsList).subscribe({
+    next:(res)=>{
+      console.log("Submitted")
+      window.print();
 
-  return soldItemsList;
-    });
+      alert("Products Sold Succesfully")
+      console.log(this.items.value);
+      this.router.navigate(['/home']);
+    },
+    error: (err) => {
+      console.error('Error: ' + err);
+      alert(" Error Occured")
+    }
+    
+  })
 
-    console.log(this.items.value);
+  
+    
+
+    
   }
 
   remove(i:any)
@@ -154,7 +165,7 @@ export class BillingComponent implements OnInit{
   this.myForm.get('items').at(i).get('price').setValue(currProduct[0].price);
   this.myForm.get('items').at(i).get('userName').setValue(this.userName);
   this.myForm.get('items').at(i).get('itemId').setValue(currProduct[0].id);
-  this.myForm.get('items').at(i).get('date').setValue(new Date());
+
   console.log("this is id",this.myForm.value.items[i].itemId)
   console.log("This after assign",this.myForm.value.items[i])
   }

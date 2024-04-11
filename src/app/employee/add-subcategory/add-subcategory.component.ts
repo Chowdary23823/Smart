@@ -68,6 +68,7 @@ export class AddSubcategoryComponent implements OnInit{
 
   receiveDataFromChild(e:any){
     this.subCategoryData=e;
+    console.log("this is from rece",this.subCategoryData);
 
   }
 

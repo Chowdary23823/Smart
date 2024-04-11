@@ -8,6 +8,6 @@ export class ProductServicesService {
   constructor() { }
   
   canShowChild: boolean=false;
-  
+  canDeactivate: boolean=true;
   
 }

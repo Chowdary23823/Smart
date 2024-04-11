@@ -6,8 +6,8 @@
 <input type="number" [(ngModel)]="to">
 
 <button (click)="search()">Search</button>
-<div>
-We have Number of products{{noOfProducts}}
+<div *ngIf="searched">
+We have Number of products based on your search {{noOfProducts}}
 </div>
 <table>
     <tr>
@@ -49,6 +49,7 @@ We have Number of products{{noOfProducts}}
             
 
         </tr>
+        
     
     
     

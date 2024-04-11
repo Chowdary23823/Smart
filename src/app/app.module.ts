@@ -30,6 +30,8 @@ import { RequestInterceptor } from './Interceptors/requests.interceptor';
 import { CredentialsService } from './Services/credentials.service';
 import { ProductServicesService } from './Services/product-services.service';
 import { APIServicesService } from './Services/apiservices.service';
+import { SoldItemsComponent } from './employee/sold-items/sold-items.component';
+import { CanDeactivateGuard } from './Guards/can-deactivate.guard';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,8 @@ import { APIServicesService } from './Services/apiservices.service';
     ProductListComponent,
     BillingComponent,
     ProductComponent,
-    ListfilterPipe
+    ListfilterPipe,
+    SoldItemsComponent
     
     
   ],

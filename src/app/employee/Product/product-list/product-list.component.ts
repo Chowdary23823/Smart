@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { APIServicesService } from '../../../Services/apiservices.service';
 import { Product } from '../../../Model/Product';
 import { ProductServicesService } from '../../../Services/product-services.service';
-import { count, max } from 'rxjs';
+import { async, count, filter, max, of } from 'rxjs';
 
 @Component({
   selector: 'app-product-list',
@@ -27,17 +27,48 @@ export class ProductListComponent implements  OnInit {
       }
     }
   };
+
+  exp:any=[
+    {
+      id:9,
+      name: 'Product',
+      description: 'Product Desc',
+      price: 15,
+      quantity: 10,
+      subCategory: {
+        name:"Kues",
+        category:{
+          name:"jahaj"
+        }
+      }
+    },
+    {
+      id:10,
+      name: 'Product10',
+      description: 'Product Desc10',
+      price: 15,
+      quantity: 10,
+      subCategory: {
+        name:"Kues",
+        category:{
+          name:"jahaj"
+        }
+      }
+    }
+    
+  ]
   constructor(private apiService:APIServicesService,public productSerice:ProductServicesService){}
 
 
   ngOnInit() {
     this.getProductData();
     //this.productSerice.canShowChild=false;
+    
     console.log("jjaja")
 
   }
 
-  getProductData(){
+  async getProductData(){
     console.log("get in home called");
        this.apiService.getProductsData().subscribe(res=>{
         this.data = res;
@@ -51,9 +82,19 @@ export class ProductListComponent implements  OnInit {
     this.productSerice.canShowChild=true;
     this.passToChild= row;
   }
+  result:any;
+  searched:boolean=false;
   search(){
-    const result = this.data.pipe(count((i:any) => i.price>=this.from && i.price<=this.to));
-    result.subscribe((x: any) => this.noOfProducts=x);
+
+    const dataOf = of(...this.data);
+    this.searched=true;
+    this.result = dataOf.pipe(
+      filter((i:any) => i.price>this.from && i.price<this.to),
+      count()
+    );
+    this.result.subscribe((x: any) => this.noOfProducts=x);
+    
+  
 
   }
 }

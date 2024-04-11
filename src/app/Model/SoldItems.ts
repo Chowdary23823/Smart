@@ -1,5 +1,5 @@
 export interface SoldItems{
-    Date: Date
+    Date: string
     Name: string
     ItemId: number
     Quantity: number

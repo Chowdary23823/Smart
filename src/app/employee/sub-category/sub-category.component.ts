@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { AfterContentChecked, AfterContentInit, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { APIServicesService } from '../../Services/apiservices.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { APIServicesService } from '../../Services/apiservices.service';
   templateUrl: './sub-category.component.html',
   styleUrl: './sub-category.component.css'
 })
-export class SubCategoryComponent {
+export class SubCategoryComponent implements OnInit,AfterContentChecked{
 
   @Output() childSearchEvent = new EventEmitter();
   @Output() onInitEvent = new EventEmitter();
@@ -16,22 +16,29 @@ export class SubCategoryComponent {
   search: string ="";
   
   
-  ngOnInit()
+   ngOnInit()
   {
-    this.get();
+     this.get();
+      console.log("come here")
     this.onInitEvent.emit(this.data);
+  }
+  ngAfterContentChecked() {
+    console.log("from this checked",this.data)
+    this.onInitEvent.emit(this.data);
+    
   }
   
   
-  get()
+   get()
     {
       console.log("get in home called");
-       this.apiSerivce.getSubCategoriesData().subscribe(res=>{
+      this.apiSerivce.getSubCategoriesData().subscribe(res=>{
         this.data = res;
       })
       
      
     }
+    
     onSearch()
     {
       this.childSearchEvent.emit(this.search );

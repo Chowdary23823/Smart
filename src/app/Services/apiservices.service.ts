@@ -21,12 +21,15 @@ export class APIServicesService {
   GetSubCategoriesDataApiUrl="http://localhost:5123/SubCategory/GetAllSubCategories"
 
 
-  addProductApiUrlPost="http://localhost:5123/SuperMarket/AllNewProduct"
+  addProductApiUrlPost="http://localhost:5123/SuperMarket/AddNewProduct"
 
   GetProductDataApiUrl="http://localhost:5123/SuperMarket/GetAllProducts"
 
 
   postSoldItemsUrl="http://localhost:5123/SuperMarket/AddSoldItems"
+
+
+  GetAllSoldDataApiUrl="http://localhost:5123/SuperMarket/GetAllSoldItems"
 
   constructor(public http: HttpClient) {
     
@@ -63,6 +66,12 @@ export class APIServicesService {
   postSoldItems(data:SoldItems[])
   {
     return this.http.post(this.postSoldItemsUrl ,data);
+  }
+
+  
+  getAllSoldData()
+  {
+    return this.http.get(this.GetAllSoldDataApiUrl);
   }
 
 }

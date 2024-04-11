@@ -10,19 +10,22 @@ import { AddProductComponent } from './employee/add-product/add-product.componen
 import { ProductListComponent } from './employee/Product/product-list/product-list.component';
 import {  ToShowProductDeatilsGuard } from './Guards/CanActivateChildProductGuard';
 import { BillingComponent } from './employee/billing/billing.component';
+import { ProductComponent } from './employee/Product/product/product.component';
+import { SoldItemsComponent } from './employee/sold-items/sold-items.component';
+import { CanDeactivateGuard } from './Guards/can-deactivate.guard';
 
 const routes : Routes = [
   {
     path: '',
     component: MainComponent,
     canActivate:[AuthGuard],
-    canActivateChild:[ToShowProductDeatilsGuard]
+    
   },
   {
     path:'home',
     component: MainComponent,
     canActivate:[AuthGuard],
-    canActivateChild:[ToShowProductDeatilsGuard]
+    
    
 
     
@@ -33,24 +36,35 @@ const routes : Routes = [
   
   },{
     path:'addcategory',
-    component:AddCategoryComponent
+    component:AddCategoryComponent,
+    canActivate:[AuthGuard],
   },
   {
     path:'addsubcategory',
-    component:AddSubcategoryComponent
+    component:AddSubcategoryComponent,
+    canActivate:[AuthGuard],
   },
   {
     path:'addproduct',
-    component:AddProductComponent
+    component:AddProductComponent,
+    canActivate:[AuthGuard],
   },
   {
     path:'productList',
     component:ProductListComponent,
-    canActivateChild:[ToShowProductDeatilsGuard]
+    canActivate:[AuthGuard],
+    
   },
   {
     path:'billing',
     component:BillingComponent,
+    canActivate:[AuthGuard],
+    
+    
+  },{
+    path:'solditems',
+    component:SoldItemsComponent,
+    canActivate:[AuthGuard],
     
   },
 
