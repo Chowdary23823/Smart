@@ -1,6 +1,6 @@
 
 <label>Enter the Customer Name </label>
-<input [(ngModel)]="userName" placeholder="Enter Name of Customer">{{userName}}
+<input [(ngModel)]="userName" placeholder="Enter Name of Customer" (input)="nameEntered()">{{userName}}
 <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
     <div formArrayName="items">
       <!--We have retrive the users username we have from database-->

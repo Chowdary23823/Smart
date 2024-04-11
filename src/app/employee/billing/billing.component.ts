@@ -3,6 +3,7 @@ import { AbstractControl, FormArray, FormBuilder, FormGroup, Validators } from '
 import { SoldItems } from '../../Model/SoldItems';
 import { APIServicesService } from '../../Services/apiservices.service';
 import { Router } from '@angular/router';
+import { ProductServicesService } from '../../Services/product-services.service';
 
 @Component({
   selector: 'app-billing',
@@ -34,11 +35,18 @@ export class BillingComponent implements OnInit{
 "quantity":157
 }
   ];
+  nameEntered(){
+    if(this.userName!== ""){
+      this.productService.canDeactivate=false;
+    }else{
+      this.productService.canDeactivate=true;
+    }
+  }
   
 
   
 
-  constructor(private fb: FormBuilder,private apiService:APIServicesService,private router:Router) {}
+  constructor(private fb: FormBuilder,private apiService:APIServicesService,private router:Router,private productService:ProductServicesService) {}
 
   ngOnInit(): void {
 
