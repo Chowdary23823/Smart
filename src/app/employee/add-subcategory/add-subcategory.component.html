@@ -50,7 +50,7 @@
         <textarea formControlName="desc"></textarea>
       </label>
       <br>
-      <label>
+      <label>Select Category
       <select formControlName="catId">
         <option >Select</option>
           <option *ngFor="let item of this.dataList;let i = index" value="{{item.id}}" [selected]="i == 0" >

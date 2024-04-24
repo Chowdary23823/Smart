@@ -31,6 +31,8 @@ export class APIServicesService {
 
   GetAllSoldDataApiUrl="http://localhost:5123/SuperMarket/GetAllSoldItems"
 
+  removeProductUrl="http://localhost:5123/SuperMarket/DeleteProduct"
+
   constructor(public http: HttpClient) {
     
   }
@@ -74,4 +76,10 @@ export class APIServicesService {
     return this.http.get(this.GetAllSoldDataApiUrl);
   }
 
+
+  removeProduct(id:number)
+  {
+    console.log("from api service",id)
+    return this.http.delete(this.removeProductUrl+"?id="+id);
+  }
 }

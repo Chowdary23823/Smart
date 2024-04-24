@@ -22,7 +22,7 @@
         <input type="number" formControlName="quantity" value="1">
       </label>
       <br>
-      <label>
+      <label>Select Sub Category
         <select formControlName="subCatId">
           <option >Select</option>
             <option *ngFor="let item of this.dataList;let i = index" value="{{item.id}}" [selected]="i == 0" >

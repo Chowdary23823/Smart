@@ -97,6 +97,7 @@ export class BillingComponent implements OnInit{
 
   onSubmit() {
     this.isSubbmit = true;
+    this.productService.canDeactivate=true;
     const itemsArray = this.myForm.get('items') as FormArray;
     itemsArray.controls.forEach((itemControl:any) => {
     

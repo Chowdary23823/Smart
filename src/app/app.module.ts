@@ -32,6 +32,10 @@ import { ProductServicesService } from './Services/product-services.service';
 import { APIServicesService } from './Services/apiservices.service';
 import { SoldItemsComponent } from './employee/sold-items/sold-items.component';
 import { CanDeactivateGuard } from './Guards/can-deactivate.guard';
+import { PricefilterPipe } from './Pipes/pricefilter.pipe';
+
+
+
 
 @NgModule({
   declarations: [
@@ -49,7 +53,9 @@ import { CanDeactivateGuard } from './Guards/can-deactivate.guard';
     BillingComponent,
     ProductComponent,
     ListfilterPipe,
-    SoldItemsComponent
+    SoldItemsComponent,
+    PricefilterPipe
+    
     
     
   ],

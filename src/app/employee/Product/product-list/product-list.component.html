@@ -1,11 +1,10 @@
 <label>
-    Price Range of products<br>
-    Update ranges to view as per request
+    Search for Products in price Ranges
 </label>
 <input type="number" [(ngModel)]="from">
-<input type="number" [(ngModel)]="to">
+<input type="number" [(ngModel)]="topass">
 
-<button (click)="search()">Search</button>
+
 <div *ngIf="searched">
 We have Number of products based on your search {{noOfProducts}}
 </div>
@@ -27,14 +26,14 @@ We have Number of products based on your search {{noOfProducts}}
     </tr>
     
     
-        <tr *ngFor="let row of this.data" style="color: aqua;" (click)="canShowChild(row)"> 
+        <tr *ngFor="let row of this.data | pricefilter: [from , topass] " style="color: aqua;" > 
             
 
             
             <td>
                 {{row.id}}
             </td>
-            <td>
+            <td (click)="canShowChild(row)">
                 {{row.name}}
             </td>
             <td>
@@ -45,6 +44,9 @@ We have Number of products based on your search {{noOfProducts}}
             </td>
             <td>
                 {{row.quantity}}
+            </td>
+            <td >
+               <button style="color: red;" (click)="remove(row.id,row.quantity)">Delete</button>
             </td>
             
 

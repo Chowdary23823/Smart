@@ -13,7 +13,7 @@ export class ProductListComponent implements  OnInit {
   data: any = []
   noOfProducts:any;
   from:number=0
-  to:number=9999;
+  topass:number=9999;
   public passToChild:any={
     id:9,
     name: 'Product',
@@ -67,6 +67,19 @@ export class ProductListComponent implements  OnInit {
     console.log("jjaja")
 
   }
+  removedData:any
+  remove(id:number,quantity:number){
+    if(quantity>0)
+      {
+        alert("The Quantity is greater than 0 so you can't delete the Product");
+      }
+    console.log(id);
+    this.apiService.removeProduct(id).subscribe(res=>{
+      this.removedData = res;
+      console.log(res)
+      
+    })
+  }
 
   async getProductData(){
     console.log("get in home called");
@@ -84,17 +97,17 @@ export class ProductListComponent implements  OnInit {
   }
   result:any;
   searched:boolean=false;
-  search(){
-
-    const dataOf = of(...this.data);
-    this.searched=true;
-    this.result = dataOf.pipe(
-      filter((i:any) => i.price>this.from && i.price<this.to),
-      count()
-    );
-    this.result.subscribe((x: any) => this.noOfProducts=x);
+  //search(){
     
+    // const dataOf = of(...this.data);
+    // this.searched=true;
+    // this.result = dataOf.pipe(
+    //   filter((i:any) => i.price>this.from && i.price<this.to)
+    // );
+    // const updatedData:any =[]
+    // this.result.subscribe((x: any) => updatedData.push(x));
+    // this.data=updatedData;
   
 
-  }
+  //}
 }
