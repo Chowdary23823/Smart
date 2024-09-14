@@ -1,0 +1,51 @@
+<table>
+    <tr>
+        <td>
+            Id
+        </td>
+        <td>Name</td>
+        <td>
+            Description
+        </td>
+        <td>
+            Price
+        </td>
+        <td>
+            Quantity
+        </td>
+        <td>
+            SubCategory
+        </td>
+        <td>
+            Category
+        </td>
+    </tr>
+    
+    
+    <tr>
+        <td>
+            {{product.id}}
+        </td>
+        <td>
+            {{product.name}}
+        </td>
+        <td>
+            {{product.description}}
+        </td>
+        <td>
+            {{product.price}}
+        </td>
+        <td>
+            {{product.quantity}}
+        </td>
+        <td>
+            {{product.subCategory.name}}
+        </td>
+        <td>
+            {{product.subCategory.category.name}}
+        </td>
+
+    </tr>
+    
+    
+    </table>

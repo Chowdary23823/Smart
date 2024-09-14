@@ -1,0 +1,62 @@
+<label>
+    Search for Products in price Ranges
+</label>
+<input type="number" [(ngModel)]="from">
+<input type="number" [(ngModel)]="topass">
+
+
+<div *ngIf="searched">
+We have Number of products based on your search {{noOfProducts}}
+</div>
+<table>
+    <tr>
+        <td>
+            Id
+        </td>
+        <td>Name</td>
+        <td>
+            Description
+        </td>
+        <td>
+            Price
+        </td>
+        <td>
+            Quantity
+        </td>
+    </tr>
+    
+    
+        <tr *ngFor="let row of this.data | pricefilter: [from , topass] " style="color: aqua;" > 
+            
+
+            
+            <td>
+                {{row.id}}
+            </td>
+            <td (click)="canShowChild(row)">
+                {{row.name}}
+            </td>
+            <td>
+                {{row.description}}
+            </td>
+            <td>
+                {{row.price}}
+            </td>
+            <td>
+                {{row.quantity}}
+            </td>
+            <td >
+               <button style="color: red;" (click)="remove(row.id,row.quantity)">Delete</button>
+            </td>
+            
+
+        </tr>
+        
+    
+    
+    
+    </table>
+
+
+
+    <app-product [product]="passToChild" *ngIf="this.productSerice.canShowChild"></app-product>

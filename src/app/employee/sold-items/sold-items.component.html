@@ -1,0 +1,46 @@
+<table>
+    <tr>
+        <td>
+            Id
+        </td>
+        <td>Name</td>
+        <td>
+            Date of Purchase
+        </td>
+        <td>
+            Item Id
+        </td>
+        <td>
+            Quantity
+        </td>
+        <td>
+            Total Price
+        </td>
+    </tr>
+    
+    
+    <tr *ngFor="let row of this.soldData">
+        <td>
+            {{row.id}}
+        </td>
+        <td>
+            {{row.name}}
+        </td>
+        <td>
+            {{row.date}}
+        </td>
+        <td>
+            {{row.itemId}}
+        </td>
+        <td>
+            {{row.quantity}}
+        </td>
+        <td>
+            {{row.totalPrice}}
+        </td>
+
+    </tr>
+    
+    
+    </table>
+    

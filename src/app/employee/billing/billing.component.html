@@ -1,0 +1,80 @@
+
+<label>Enter the Customer Name </label>
+<input [(ngModel)]="userName" placeholder="Enter Name of Customer" (input)="nameEntered()">
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <div formArrayName="items">
+      <!--We have retrive the users username we have from database-->
+      <button type="button" (click)="addItem()">Add Item</button>
+      <table>
+        <tr>
+          <td>Item Name</td>
+          <td>Available Quantity</td>
+          <td>Price</td>
+          <td>Quantity Requried</td>
+        </tr>
+  
+        <tr
+          *ngFor="let item of items.controls; let i = index"
+          [formGroupName]="i"
+        >
+          <td>
+            <select type="text" formControlName="name"  (change)="getAllDetails(i)">
+              <option value="">Select an Item...</option>
+            <option *ngFor="let product of this.productsData" >
+                 {{product.name}}
+            </option>
+            </select>
+          </td>
+          <td>
+            <input type="number" formControlName="quantity"  readonly="readonly"/>
+          </td>
+          <td>
+            <input type="number" formControlName="price"  readonly="readonly"/>
+          </td>
+          <td>
+            <input type="number" formControlName="quantityrequried" (input)="requriedChecking(i)" />
+            <br>
+            <label style="color: red;" *ngIf="this.myForm.value.items[i].errorLable">The Quantity requried should be Less than available quantity</label>
+          </td>
+          <td style="color: red;" (click)="remove(i)">
+            Delete
+          </td>
+        </tr>
+      </table>
+    </div>
+    <button type="submit" >Submit</button>
+  </form>
+  
+  <div *ngIf="isSubbmit">
+    <table>
+      <tr>
+        <td>
+          {{this.myForm.get('items').at(0).get('userName').value}}
+        </td>
+        <td>
+          {{this.myForm.get('items').at(0).get('date').value |  date:'dd/MMM/yyyy' }}
+        </td>
+      </tr>
+      <tr>
+        <td>Name</td>
+        
+        <td>Price</td>
+        <td>Requried Quantity</td>
+        <td>Total Price </td>
+      </tr>
+      <tr *ngFor="let item of items.value">
+        <td>{{ item.name }}</td>
+       
+        <td>{{ item.price | currency:"INR" }}</td>
+        <td>{{ item.quantityrequried}}</td>
+
+        <td>{{ item.quantityrequried * item.price | currency:"INR"}}</td>
+      </tr>
+      <tr>
+        <td>
+          Total Sum of {{billSum | currency:"INR"}}
+        </td>
+      </tr>
+    </table>
+  </div>
+  
