@@ -1,14 +1,32 @@
 
-<div>
+<div *ngIf="!isNewUser">
 <div class="login-div">
     <form [formGroup]="login" (ngSubmit)="onSubmit()">
-        <p><label for="username">Email: </label>
-        <input  type="email" formControlName="email"/>
+        <p><label for="username">Email </label>
+        <input type="email" formControlName="email"/>
         </p>
         <p><label for="password">Password:</label> 
         <input type="password" formControlName="password"/>
         </p>
+        <p><label (click)="NewUser()">New User? Sign Up</label></p>
         <input type="submit"/>
     </form>
 </div>
+</div>
+<div *ngIf="isNewUser">
+    <div class="signUp-div">
+        <form [formGroup]="signUp" (ngSubmit)="onSignUp()">
+            <p><label for="name">Name </label>
+                <input type="text" formControlName="name"/>
+                </p>
+            <p><label for="email">Email </label>
+            <input type="email" formControlName="email"/>
+            </p>
+            <p><label for="newpassword">Password:</label> 
+            <input type="password" formControlName="newpassword"/>
+            </p>
+            <p><label (click)="ExistingUser()">Existing User? Sign In</label></p>
+            <input type="submit"/>
+        </form>
+    </div>
 </div>
